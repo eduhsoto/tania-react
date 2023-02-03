@@ -6,7 +6,7 @@ import {
   FooterButton,
 } from '../assets/styled-components/Footer';
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <>
       <FooterH>

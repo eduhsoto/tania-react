@@ -1,7 +1,7 @@
 import Head from '../components/Head';
 import Item from '../components/portafolio/Item';
 
-const Portafolio = () => {
+const Portafolio = (): JSX.Element => {
   return (
     <>
       <Head

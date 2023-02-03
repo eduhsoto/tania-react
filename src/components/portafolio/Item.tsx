@@ -7,7 +7,13 @@ import {
   Paragraph,
 } from '../../assets/styled-components/portafolio/Item';
 
-const Item = ({ link, img, title, category, paragraph } : ItemProps) => {
+const Item = ({
+  link,
+  img,
+  title,
+  category,
+  paragraph,
+}: ItemProps): JSX.Element => {
   return (
     <ListItem>
       <a
@@ -30,10 +36,10 @@ const Item = ({ link, img, title, category, paragraph } : ItemProps) => {
 
 export default Item;
 
-type ItemProps = {
-  link: string,
-  img: string,
-  title: string,
-  category: string,
-  paragraph: string,
-};
+interface ItemProps {
+  link: string;
+  img: string;
+  title: string;
+  category: string;
+  paragraph: string;
+}

@@ -2,7 +2,7 @@ import Head from '../components/Head';
 import Certificate from '../components/path/Certificate';
 import { TextP } from '../assets/styled-components/home/Objective';
 
-const Path = () => {
+const Path = (): JSX.Element => {
   return (
     <>
       <Head

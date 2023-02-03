@@ -5,7 +5,12 @@ import {
 } from '../../assets/styled-components/home/Objective';
 import { List } from '../../assets/styled-components/home/Skill';
 
-const Objective = ({ img, paragraph, listed, elements } : ObjectiveProps) => {
+const Objective = ({
+  img,
+  paragraph,
+  listed,
+  elements,
+}: ObjectiveProps): JSX.Element => {
   return (
     <CardObjectives>
       <CardImage src={img} alt='goal image'></CardImage>
@@ -23,9 +28,9 @@ const Objective = ({ img, paragraph, listed, elements } : ObjectiveProps) => {
 
 export default Objective;
 
-type ObjectiveProps = {
-  img: string,
-  paragraph: string,
-  listed: boolean,
-  elements?: Array<string>,
-};
+interface ObjectiveProps {
+  img: string;
+  paragraph: string;
+  listed: boolean;
+  elements?: string[];
+}

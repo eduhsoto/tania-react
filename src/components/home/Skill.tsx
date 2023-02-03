@@ -4,7 +4,7 @@ import {
   List,
 } from '../../assets/styled-components/home/Skill';
 
-const Skill = ({ title, list } : SkillProps) => {
+const Skill = ({ title, list }: SkillProps): JSX.Element => {
   return (
     <SkillDiv>
       <TitleH3>{title}</TitleH3>
@@ -19,7 +19,7 @@ const Skill = ({ title, list } : SkillProps) => {
 
 export default Skill;
 
-type SkillProps = {
-  title: string,
-  list: Array<string>,
-};
+interface SkillProps {
+  title: string;
+  list: string[];
+}
