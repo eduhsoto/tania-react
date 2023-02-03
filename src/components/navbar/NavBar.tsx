@@ -8,10 +8,10 @@ import {
 } from '../../assets/styled-components/navbar/Nav';
 import Hamburger from './Hamburger';
 
-const NavBar = () => {
+const NavBar = (): JSX.Element => {
   const [clicked, setClicked] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setClicked(!clicked);
   };
 

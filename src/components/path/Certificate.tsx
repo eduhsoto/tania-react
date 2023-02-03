@@ -4,7 +4,7 @@ import {
   ALink,
 } from '../../assets/styled-components/path/Certificate';
 
-const Certificate = ({ img, link } : CertificateProps) => {
+const Certificate = ({ img, link }: CertificateProps): JSX.Element => {
   return (
     <Group>
       <Image src={img} alt='certificate image'></Image>
@@ -17,7 +17,7 @@ const Certificate = ({ img, link } : CertificateProps) => {
 
 export default Certificate;
 
-type CertificateProps = {
-  img: string,
-  link: string,
-};
+interface CertificateProps {
+  img: string;
+  link: string;
+}

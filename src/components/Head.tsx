@@ -6,7 +6,7 @@ import {
   Paragraph,
 } from '../assets/styled-components/Head';
 
-const Head = ({ img, title, paragraph, reverse } : HeadProps) => {
+const Head = ({ img, title, paragraph, reverse }: HeadProps): JSX.Element => {
   return (
     <HeadSection reverse={reverse}>
       <Image src={img} alt='head image'></Image>
@@ -20,9 +20,9 @@ const Head = ({ img, title, paragraph, reverse } : HeadProps) => {
 
 export default Head;
 
-type HeadProps = {
-  img: string,
-  title: string,
-  paragraph: string,
-  reverse: boolean,
-};
+interface HeadProps {
+  img: string;
+  title: string;
+  paragraph: string;
+  reverse: boolean;
+}

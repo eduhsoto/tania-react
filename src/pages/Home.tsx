@@ -3,7 +3,7 @@ import Skill from '../components/home/Skill';
 import Objective from '../components/home/Objective';
 import { TextP } from '../assets/styled-components/home/Objective';
 
-const Home = () => {
+const Home = (): JSX.Element => {
   return (
     <>
       <Head

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 type HeadProps = {
-  reverse: boolean
-}
+  reverse: boolean;
+};
 
 export const HeadSection = styled.section<HeadProps>`
   display: grid;
