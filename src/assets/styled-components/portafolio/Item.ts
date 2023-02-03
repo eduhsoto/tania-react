@@ -13,7 +13,7 @@ export const ListItem = styled.div`
   }
 `;
 
-type SrcProps = {
+interface SrcProps {
   src: string;
 };
 
