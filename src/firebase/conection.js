@@ -2,13 +2,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  getBytes,
-} from 'firebase/storage'
-import {
   getFirestore,
   collection,
   addDoc,
@@ -20,6 +13,14 @@ import {
   setDoc,
   deleteDoc,
 } from 'firebase/firestore'
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getBytes,
+} from 'firebase/storage'
+
 
 const { REACT_APP_APIKEY, REACT_APP_AUTHDOMAIN, REACT_APP_PROJECTID, REACT_APP_STORAGEBUCKET, REACT_APP_MESAGGEID, REACT_APP_APPID, REACT_APP_MESID } = process.env;
 
