@@ -1,8 +1,9 @@
-import { auth } from '../firebase/conection'
-import { EmailAuthProvider, signInWithCredential } from 'firebase/auth'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { FirebaseError } from 'firebase/app'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../auth/authContext'
+import type {  AuthContextModel } from '../auth/authContext'
 
 interface Inputs {
   email: string
@@ -17,13 +18,14 @@ const Login = (): JSX.Element => {
   } = useForm<Inputs>()
 
   const [errAuth, setAuth] = useState({ err: false, msg: '' })
+  const navigate = useNavigate()
+  const {signIn} = useAuth() as AuthContextModel
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const authProvider = EmailAuthProvider.credential(data.email, data.pass)
-
     try {
-      await signInWithCredential(auth, authProvider)
-      setAuth({ err: false, msg: 'Iniciando sesión' })
+        await signIn(data.email, data.pass)
+        setAuth({ err: false, msg: 'Iniciando sesión' })
+        navigate('/dashboard')
     } catch (e) {
       setAuth({ err: true, msg: handleErrors(e) })
     }
