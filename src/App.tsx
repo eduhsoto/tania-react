@@ -6,7 +6,7 @@ import Portafolio from './pages/Portafolio'
 import Footer from './components/Footer'
 import './assets/index.css'
 import Login from './pages/Login'
-import Dashboard from './pages/Dashboard/Dashboard'
+import Dashboard from './pages/dashboard/Dashboard'
 import { AuthProvider } from './auth/authContext'
 
 const App = (): JSX.Element => {
