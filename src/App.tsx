@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/dashboard/Dashboard'
 import { AuthProvider } from './auth/authContext'
 import ProctedRoute from './pages/dashboard/ProctedRoute'
+import AddItem from './pages/dashboard/sub/AddItem'
 
 const App = (): JSX.Element => {
   return (
@@ -26,6 +27,14 @@ const App = (): JSX.Element => {
             element={
               <ProctedRoute>
                 <Dashboard />
+              </ProctedRoute>
+            }
+          />
+          <Route
+            path='/additem'
+            element={
+              <ProctedRoute>
+                <AddItem />
               </ProctedRoute>
             }
           />
