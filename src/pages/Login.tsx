@@ -3,7 +3,7 @@ import { FirebaseError } from 'firebase/app'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/authContext'
-import type {  AuthContextModel } from '../auth/authContext'
+import type { AuthContextModel } from '../auth/authContext'
 
 interface Inputs {
   email: string
@@ -19,13 +19,13 @@ const Login = (): JSX.Element => {
 
   const [errAuth, setAuth] = useState({ err: false, msg: '' })
   const navigate = useNavigate()
-  const {signIn} = useAuth() as AuthContextModel
+  const { signIn } = useAuth() as AuthContextModel
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-        await signIn(data.email, data.pass)
-        setAuth({ err: false, msg: 'Iniciando sesión' })
-        navigate('/dashboard')
+      await signIn(data.email, data.pass)
+      setAuth({ err: false, msg: 'Iniciando sesión' })
+      navigate('/dashboard')
     } catch (e) {
       setAuth({ err: true, msg: handleErrors(e) })
     }
@@ -33,15 +33,19 @@ const Login = (): JSX.Element => {
 
   const handleErrors = (e: unknown): string => {
     const err = e instanceof FirebaseError
-
+    
     if (err) {
-      const userNotFound =
+      const msg =
         e.code === 'auth/user-not-found'
           ? 'Correo incorrecto'
-          : 'Contraseña incorrecta'
-      return userNotFound
+          : e.code === 'auth/wrong-password'
+          ? 'Contraseña incorrecta'
+          : e.code === 'auth/network-request-failed'
+          ? 'Error de red, vuelva a conectarse y recargar esta pagina'
+          : 'Iniciando sesión'
+      return msg
     }
-    return 'Todo esta bien'
+    return 'Iniciando sesión'
   }
 
   return (

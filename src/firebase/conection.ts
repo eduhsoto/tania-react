@@ -3,10 +3,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import {
   getFirestore,
-  collection,
   addDoc,
   getDocs,
-  doc,
   getDoc,
   query,
   where,
@@ -21,8 +19,15 @@ import {
   getBytes,
 } from 'firebase/storage'
 
-
-const { REACT_APP_APIKEY, REACT_APP_AUTHDOMAIN, REACT_APP_PROJECTID, REACT_APP_STORAGEBUCKET, REACT_APP_MESAGGEID, REACT_APP_APPID, REACT_APP_MESID } = process.env;
+const {
+  REACT_APP_APIKEY,
+  REACT_APP_AUTHDOMAIN,
+  REACT_APP_PROJECTID,
+  REACT_APP_STORAGEBUCKET,
+  REACT_APP_MESAGGEID,
+  REACT_APP_APPID,
+  REACT_APP_MESID,
+} = process.env
 
 const firebaseConfig = {
   apiKey: REACT_APP_APIKEY,
@@ -37,5 +42,6 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+export const db = getFirestore(app)
+export const storage = getStorage(app)
+

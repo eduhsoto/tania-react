@@ -1,7 +1,10 @@
+import { collection, addDoc } from 'firebase/firestore'
 import { useForm, type SubmitHandler } from 'react-hook-form'
+import { db, storage } from '../../../firebase/conection'
+import { ref, uploadBytes } from 'firebase/storage'
 
 interface Inputs {
-  image: File
+  image: FileList
   link: string
   nameP: string
   category: string
@@ -13,10 +16,27 @@ const AddItem = (): JSX.Element => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data)
+  const itemCollection = collection(db, 'item')
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const storageRef = ref(storage, data.image[0].name)
+    const file = data.image[0]
+    const fileBlob = new Blob([file], { type: file.type })
+    try {
+      await addDoc(itemCollection, {
+        url: data.link,
+        title: data.nameP,
+        category: data.category,
+        description: data.description,
+      })
+      await uploadBytes(storageRef, fileBlob)
+      reset()
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -30,7 +50,6 @@ const AddItem = (): JSX.Element => {
               required: true,
               pattern: /^[A-Za-z0-9.-_]+@[A-Za-z]+\.[A-Za-z]+$/i,
             })}
-            placeholder='Sube una imagen'
           />
           {errors.image?.type === 'required' && <p>La imagen es requerida</p>}
         </div>
@@ -84,7 +103,7 @@ const AddItem = (): JSX.Element => {
               required: true,
               pattern: /^[ a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/i,
             })}
-            placeholder='Escribe tu contraseña'
+            placeholder='Escribe una descripción'
           />
           {errors.description?.type === 'required' && (
             <p>La descripción es requerida</p>

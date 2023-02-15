@@ -15,7 +15,7 @@ const Dashboard = (): JSX.Element => {
     <div>
       <h1>Hola Tania</h1>
       <div>
-        <Link to='/create'>Crear nuevo item</Link>
+        <Link to='/additem'>Crear nuevo item</Link>
         <button>
           <img src='/img/tania-profile.png' alt='tania profile' />
         </button>
