@@ -4,10 +4,10 @@ import Msg from './Msg'
 import Init from './Init'
 
 const Dashboard = (): JSX.Element => {
-  const { isExistUser, isLoading } = useAuth() as AuthContextModel
+  const { user, isLoading } = useAuth() as AuthContextModel
   if (isLoading) return <h1>Cargando</h1>
   return (
-      isExistUser ? <Init /> : <Msg />
+    user !== null ? <Init /> : <Msg />
   )
 }
 
