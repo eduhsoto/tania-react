@@ -1,23 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import {
-  getFirestore,
-  addDoc,
-  getDocs,
-  getDoc,
-  query,
-  where,
-  setDoc,
-  deleteDoc,
-} from 'firebase/firestore'
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  getBytes,
-} from 'firebase/storage'
+import { getFirestore } from 'firebase/firestore'
+import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import type {UploadResult} from 'firebase/storage'
+import { v4 } from 'uuid'
 
 const {
   REACT_APP_APIKEY,
@@ -45,3 +32,7 @@ export const auth = getAuth(app)
 export const db = getFirestore(app)
 export const storage = getStorage(app)
 
+export const uploadFile = async (file : Blob) : Promise<UploadResult> => {
+  const storageRef = ref(storage, v4())
+  return await uploadBytes(storageRef, file)
+}
