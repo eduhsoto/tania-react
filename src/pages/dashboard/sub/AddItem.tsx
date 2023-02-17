@@ -1,7 +1,8 @@
 import { collection, addDoc } from 'firebase/firestore'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { db, storage } from '../../../firebase/conection'
-import { ref, uploadBytes } from 'firebase/storage'
+import { db, storage, uploadFile } from '../../../firebase/conection'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { useNavigate } from 'react-router-dom'
 
 interface Inputs {
   image: FileList
@@ -12,6 +13,8 @@ interface Inputs {
 }
 
 const AddItem = (): JSX.Element => {
+  const navigate = useNavigate()
+
   const {
     register,
     formState: { errors },
@@ -22,18 +25,20 @@ const AddItem = (): JSX.Element => {
   const itemCollection = collection(db, 'item')
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const storageRef = ref(storage, data.image[0].name)
-    const file = data.image[0]
-    const fileBlob = new Blob([file], { type: file.type })
     try {
+      const snapshot = await uploadFile(data.image[0])
+      const idImage = snapshot.metadata.fullPath
+      const getURl = await getDownloadURL(snapshot.ref)
       await addDoc(itemCollection, {
         url: data.link,
         title: data.nameP,
         category: data.category,
         description: data.description,
+        imageUrl: getURl,
+        deleteImage: idImage,
       })
-      await uploadBytes(storageRef, fileBlob)
       reset()
+      navigate('/dashboard')
     } catch (e) {
       console.log(e)
     }
