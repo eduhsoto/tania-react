@@ -1,8 +1,10 @@
 import { collection, addDoc } from 'firebase/firestore'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { db, storage, uploadFile } from '../../../firebase/conection'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { db, uploadFile } from '../../../firebase/conection'
+import { getDownloadURL } from 'firebase/storage'
 import { useNavigate } from 'react-router-dom'
+import type React from 'react'
+import { useState } from 'react'
 
 interface Inputs {
   image: FileList
@@ -14,6 +16,8 @@ interface Inputs {
 
 const AddItem = (): JSX.Element => {
   const navigate = useNavigate()
+  const [visibleImg, setVisible] = useState<string | null>(null)
+  const [validationImg, setValidationImg] = useState(false)
 
   const {
     register,
@@ -24,23 +28,41 @@ const AddItem = (): JSX.Element => {
 
   const itemCollection = collection(db, 'item')
 
+  const handleImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const file = e.target.files
+    if (file != null) {
+      const imageFile = file[0]
+      console.log(imageFile)
+      const reader = new FileReader()
+      reader.onload = () => {
+        const result = reader.result as string
+        setVisible(result)
+      }
+      reader.readAsDataURL(imageFile)
+    }
+  }
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    try {
-      const snapshot = await uploadFile(data.image[0])
-      const idImage = snapshot.metadata.fullPath
-      const getURl = await getDownloadURL(snapshot.ref)
-      await addDoc(itemCollection, {
-        url: data.link,
-        title: data.nameP,
-        category: data.category,
-        description: data.description,
-        imageUrl: getURl,
-        deleteImage: idImage,
-      })
-      reset()
-      navigate('/dashboard')
-    } catch (e) {
-      console.log(e)
+    if(data.image[0].type !== 'image/jpeg' && data.image[0].type !== 'image/png'){
+      setValidationImg(true)
+    }else{
+      try {
+        const snapshot = await uploadFile(data.image[0])
+        const idImage = snapshot.metadata.fullPath
+        const getURl = await getDownloadURL(snapshot.ref)
+        await addDoc(itemCollection, {
+          url: data.link,
+          title: data.nameP,
+          category: data.category,
+          description: data.description,
+          imageUrl: getURl,
+          deleteImage: idImage,
+        })
+        reset()
+        navigate('/dashboard')
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 
@@ -48,14 +70,20 @@ const AddItem = (): JSX.Element => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <div></div>
+          {visibleImg != null && (
+            <div>
+              <img src={visibleImg} alt='preview' />
+            </div>
+          )}
           <input
             type='file'
             {...register('image', {
               required: true,
               pattern: /^[A-Za-z0-9.-_]+@[A-Za-z]+\.[A-Za-z]+$/i,
             })}
+            onChange={handleImage}
           />
+          {validationImg && <p>Formato de imagen no válido, solo suba jpg/png</p>}
           {errors.image?.type === 'required' && <p>La imagen es requerida</p>}
         </div>
         <div>
