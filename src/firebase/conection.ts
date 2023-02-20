@@ -36,3 +36,8 @@ export const uploadFile = async (file : Blob) : Promise<UploadResult> => {
   const storageRef = ref(storage, v4())
   return await uploadBytes(storageRef, file)
 }
+
+export const updateloadFile = async (file : Blob, idImg : string) : Promise<UploadResult> => {
+  const storageRef = ref(storage, idImg)
+  return await uploadBytes(storageRef, file)
+}

@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 import { AuthProvider } from './auth/authContext'
 import ProctedRoute from './pages/dashboard/ProctedRoute'
 import AddItem from './pages/dashboard/sub/AddItem'
+import EditItem from './pages/dashboard/sub/EditItem'
 
 const App = (): JSX.Element => {
   return (
@@ -35,6 +36,14 @@ const App = (): JSX.Element => {
             element={
               <ProctedRoute>
                 <AddItem />
+              </ProctedRoute>
+            }
+          />
+          <Route
+            path='/edit/:id'
+            element={
+              <ProctedRoute>
+                <EditItem />
               </ProctedRoute>
             }
           />
