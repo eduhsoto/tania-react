@@ -8,7 +8,7 @@ import { auth } from '../firebase/conection'
 export interface AuthContextModel {
   auth: Auth
   user: User | null
-  isExistUser: boolean
+  isLoading: boolean
   signIn: (email: string, pass: string) => Promise<UserCredential>
   logOut: () => Promise<void>
 }
@@ -22,7 +22,7 @@ export const useAuth = (): AuthContextModel | null => {
 
 export const AuthProvider = ({ children }: RouteProps): React.ReactElement => {
   const [user, setUser] = useState<User | null>(null)
-  const [isExistUser, setExistsUser] = useState(false)
+  const [isLoading, setLoading] = useState(true)
 
   const signIn = async (
     email: string,
@@ -36,19 +36,20 @@ export const AuthProvider = ({ children }: RouteProps): React.ReactElement => {
   }
 
   useEffect(() => {
-    auth.onAuthStateChanged(currentUser => {
-      if(currentUser !== null){
-        setExistsUser(true)
-        setUser(currentUser)
-      }else{
-        setExistsUser(false)
-      }
+    const unsuscribe = auth.onAuthStateChanged((currentUser) => {
+      setLoading(false)
+      setUser(currentUser)
     })
-  },[])
 
+    return () => {
+      unsuscribe()
+    }
+  }, [])
 
   return (
-    <AuthContext.Provider value={{ auth, user, signIn, logOut, isExistUser }}>
+    <AuthContext.Provider
+      value={{ auth, user, signIn, logOut, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   )
