@@ -1,10 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../auth/authContext'
-import type { AuthContextModel } from '../../auth/authContext'
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import { db, storage } from '../../firebase/conection'
 import { useEffect, useState } from 'react'
 import { deleteObject, ref } from 'firebase/storage'
+import { useAuth, type AuthContextModel } from '../../context/authContext'
 
 interface itemType {
   id: string
