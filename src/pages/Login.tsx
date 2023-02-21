@@ -1,6 +1,6 @@
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { FirebaseError } from 'firebase/app'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/authContext'
 import type { AuthContextModel } from '../auth/authContext'
@@ -19,7 +19,13 @@ const Login = (): JSX.Element => {
 
   const [errAuth, setAuth] = useState({ err: false, msg: '' })
   const navigate = useNavigate()
-  const { signIn } = useAuth() as AuthContextModel
+  const { signIn, user } = useAuth() as AuthContextModel
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate('/dashboard');
+    }
+  }, [user,navigate]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
