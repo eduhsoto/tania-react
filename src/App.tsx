@@ -11,11 +11,13 @@ import { AuthProvider } from './auth/authContext'
 import ProctedRoute from './pages/dashboard/ProctedRoute'
 import AddItem from './pages/dashboard/sub/AddItem'
 import EditItem from './pages/dashboard/sub/EditItem'
+import { FooterwithRender, NavBarwithRender } from './hco/LocationHco'
 
 const App = (): JSX.Element => {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
+      <NavBarwithRender />
       <AuthProvider>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -49,7 +51,8 @@ const App = (): JSX.Element => {
           />
         </Routes>
       </AuthProvider>
-      <Footer />
+      {/* <Footer /> */}
+      <FooterwithRender />
     </>
   )
 }
