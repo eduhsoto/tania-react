@@ -1,31 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
+import { deleteDoc, doc } from 'firebase/firestore'
 import { db, storage } from '../../firebase/conection'
-import { useEffect, useState } from 'react'
 import { deleteObject, ref } from 'firebase/storage'
 import { useAuth, type AuthContextModel } from '../../context/authContext'
-
-interface itemType {
-  id: string
-  url: string
-  title: string
-  category: string
-  description: string
-  imageUrl: string
-  deleteImage: string
-}
+import { type DocsContextModel, useDocs } from '../../context/getDocsContext'
 
 const Dashboard = (): JSX.Element => {
   const { logOut } = useAuth() as AuthContextModel
   const navigate = useNavigate()
-  const [items, setItem] = useState<itemType[]>([])
+  const { items } = useDocs() as DocsContextModel
 
   const handleLogout = async (): Promise<void> => {
     await logOut()
     navigate('/login')
   }
-
-  const itemCollection = collection(db, 'item')
 
   const deleteItem = async (id: string, deleteImage: string): Promise<void> => {
     if (
@@ -37,18 +25,6 @@ const Dashboard = (): JSX.Element => {
       await deleteObject(deleteImg)
     }
   }
-
-  useEffect(() => {
-    const getItem = async (): Promise<void> => {
-      const data = await getDocs(itemCollection)
-      const itemData = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      })) as itemType[]
-      setItem(itemData)
-    }
-    void getItem()
-  }, [itemCollection])
 
   return (
     <div>
@@ -119,6 +95,7 @@ const Dashboard = (): JSX.Element => {
           </table>
         </div>
       </div>
+      <Link to='/portafolio'><h1>Ver</h1></Link>
     </div>
   )
 }

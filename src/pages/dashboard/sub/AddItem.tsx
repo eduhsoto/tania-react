@@ -16,7 +16,7 @@ interface Inputs {
 
 const AddItem = (): JSX.Element => {
   const navigate = useNavigate()
-  const [visibleImg, setVisible] = useState<string | null>(null)
+  const [previewImg, setPreviewImg] = useState<string | null>(null)
   const [validationImg, setValidationImg] = useState(false)
 
   const {
@@ -36,7 +36,7 @@ const AddItem = (): JSX.Element => {
       const reader = new FileReader()
       reader.onload = () => {
         const result = reader.result as string
-        setVisible(result)
+        setPreviewImg(result)
       }
       reader.readAsDataURL(imageFile)
     }
@@ -70,9 +70,9 @@ const AddItem = (): JSX.Element => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          {visibleImg != null && (
+          {previewImg != null && (
             <div>
-              <img src={visibleImg} alt='preview' />
+              <img src={previewImg} alt='preview' />
             </div>
           )}
           <input
@@ -134,7 +134,7 @@ const AddItem = (): JSX.Element => {
             type='text'
             {...register('description', {
               required: true,
-              pattern: /^[ a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/i,
+              pattern: /^[ a-zA-ZÑñáéíóúÁÉÍÓÚ. ]+$/i,
             })}
             placeholder='Escribe una descripción'
           />
