@@ -32,7 +32,6 @@ const AddItem = (): JSX.Element => {
     const file = e.target.files
     if (file != null) {
       const imageFile = file[0]
-      console.log(imageFile)
       const reader = new FileReader()
       reader.onload = () => {
         const result = reader.result as string
