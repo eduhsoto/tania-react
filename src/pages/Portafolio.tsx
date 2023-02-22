@@ -1,7 +1,9 @@
-import Head from '../components/Head';
-import Item from '../components/portafolio/Item';
+import Head from '../components/Head'
+import Item from '../components/portafolio/Item'
+import { type DocsContextModel, useDocs } from '../context/getDocsContext'
 
 const Portafolio = (): JSX.Element => {
+  const { items } = useDocs() as DocsContextModel
   return (
     <>
       <Head
@@ -12,18 +14,22 @@ const Portafolio = (): JSX.Element => {
       />
       <section>
         <div className='container'>
-          <Item
-            link='https://www.behance.net/gallery/148786781/WorkClick'
-            img='/img/portafolio-item.jpg'
-            title='Worclick'
-            category='Diseño UX'
-            paragraph='Diseño de sitio web y móvil para el reclutamiento de recursos
-      humanos y búsqueda de empleo.'
-          />
+          {items.map((item) => {
+            return (
+              <Item
+                key={item.id}
+                link={item.url}
+                img={item.imageUrl}
+                title={item.title}
+                category={item.category}
+                paragraph={item.description}
+              />
+            )
+          })}
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Portafolio;
+export default Portafolio

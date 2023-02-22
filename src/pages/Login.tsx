@@ -2,8 +2,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form'
 import { FirebaseError } from 'firebase/app'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../auth/authContext'
-import type { AuthContextModel } from '../auth/authContext'
+import { useAuth, type AuthContextModel } from '../context/authContext'
 
 interface Inputs {
   email: string
