@@ -4,7 +4,8 @@
   line-height: 24px;
   font-weight: 400;
   --primary_color: #ffffff;
-  --secondary_color: #f35a7e73;
+  --secondary_color: #F35A7E;
+  --errors: #9E1F25;
   --complementary_color: #187575fa;
   --complementary_color_second: #225555fa;
   --text_color: #5c5555;
