@@ -7,6 +7,7 @@ width: 35%;
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: var(--complementary_color);
 }
 
 img{

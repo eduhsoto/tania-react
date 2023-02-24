@@ -5,6 +5,12 @@ import { getDownloadURL } from 'firebase/storage'
 import { useNavigate, useParams } from 'react-router-dom'
 import type React from 'react'
 import { useState, useEffect } from 'react'
+import {
+  Button,
+  GroupForm,
+  LoginDiv,
+} from '../../../assets/styled-components/login/Login'
+import { FormAdd } from '../../../assets/styled-components/dashboard/sub/AddItem'
 
 interface Inputs {
   image: FileList
@@ -94,9 +100,10 @@ const EditItem = (): JSX.Element => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+    <LoginDiv>
+      <FormAdd onSubmit={handleSubmit(onSubmit)}>
+        <h1>Editar item</h1>
+        <GroupForm>
           {previewImg != null && (
             <div>
               <img src={previewImg} alt='preview' />
@@ -113,8 +120,8 @@ const EditItem = (): JSX.Element => {
             <p>Formato de imagen no válido, solo suba jpg/png</p>
           )}
           {errors.image?.type === 'required' && <p>La imagen es requerida</p>}
-        </div>
-        <div>
+        </GroupForm>
+        <GroupForm>
           <label htmlFor='link'>Enlace al portafolio</label>
           <input
             type='text'
@@ -126,8 +133,8 @@ const EditItem = (): JSX.Element => {
           />
           {errors.link?.type === 'required' && <p>El enlace es requerido</p>}
           {errors.link?.type === 'pattern' && <p>Ingrese un enlace válido</p>}
-        </div>
-        <div>
+        </GroupForm>
+        <GroupForm>
           <label htmlFor='nameP'>Nombre del proyecto</label>
           <input
             type='text'
@@ -140,8 +147,8 @@ const EditItem = (): JSX.Element => {
             <p>El nombre del proyecto es requerido</p>
           )}
           {errors.nameP?.type === 'pattern' && <p>Solo incluya letras</p>}
-        </div>
-        <div>
+        </GroupForm>
+        <GroupForm>
           <label htmlFor='pass'>Categoría</label>
           <input
             type='text'
@@ -155,11 +162,10 @@ const EditItem = (): JSX.Element => {
             <p>La categoría es requerida</p>
           )}
           {errors.category?.type === 'pattern' && <p>Solo incluya letras</p>}
-        </div>
-        <div>
+        </GroupForm>
+        <GroupForm>
           <label htmlFor='pass'>Descripción</label>
-          <input
-            type='text'
+          <textarea
             {...register('description', {
               required: true,
               pattern: /^[ a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/i,
@@ -170,10 +176,10 @@ const EditItem = (): JSX.Element => {
             <p>La descripción es requerida</p>
           )}
           {errors.description?.type === 'pattern' && <p>Solo incluya letras</p>}
-        </div>
-        <button type='submit'>Agregar</button>
-      </form>
-    </>
+        </GroupForm>
+        <Button type='submit'>Agregar</Button>
+      </FormAdd>
+    </LoginDiv>
   )
 }
 
