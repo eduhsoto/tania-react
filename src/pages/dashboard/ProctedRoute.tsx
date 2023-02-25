@@ -1,11 +1,15 @@
 import type { PropsWithChildren } from 'react'
 import { Navigate } from 'react-router-dom'
+import Spinner from '../../components/Spinner'
 import { useAuth, type AuthContextModel } from '../../context/authContext'
 
 const ProctedRoute = ({ children }: PropsWithChildren): JSX.Element => {
   const { user, isLoading } = useAuth() as AuthContextModel
 
-  if (isLoading) return <h1>Cargando</h1>
+  if (isLoading)
+    return (
+      <Spinner />
+    )
 
   if (user === null)
     return (
