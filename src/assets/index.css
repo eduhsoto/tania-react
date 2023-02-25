@@ -24,6 +24,12 @@
   padding: 0;
 }
 
+.spinner__load{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

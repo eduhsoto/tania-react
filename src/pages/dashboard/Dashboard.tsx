@@ -4,7 +4,8 @@ import { db, storage } from '../../firebase/conection'
 import { deleteObject, ref } from 'firebase/storage'
 import { useAuth, type AuthContextModel } from '../../context/authContext'
 import { type DocsContextModel, useDocs } from '../../context/getDocsContext'
-import { H1, LinkEdit, Table, TopNav, Wrapper } from '../../assets/styled-components/dashboard/Dashboard'
+import { ButtonDas, H1, LinkEdit, Table, TopNav, Wrapper } from '../../assets/styled-components/dashboard/Dashboard'
+import Spinner from '../../components/Spinner'
 
 const Dashboard = (): JSX.Element => {
   const { logOut } = useAuth() as AuthContextModel
@@ -31,10 +32,10 @@ const Dashboard = (): JSX.Element => {
     <div>
       <TopNav>
         <h1>Hola Tania</h1>
-        <Link to='/additem'>Crear nuevo item</Link>
+        <LinkEdit to='/additem'>Crear nuevo item</LinkEdit>
         <div>
           {/* <img src='/img/tania-profile.png' alt='tania profile' /> */}
-          <button onClick={handleLogout}>Cerrar sesión</button>
+          <ButtonDas onClick={handleLogout}>Cerrar sesión</ButtonDas>
         </div>
       </TopNav>
       <Wrapper>
@@ -50,7 +51,8 @@ const Dashboard = (): JSX.Element => {
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => {
+            {items.length !== 0    
+           ? (items.map((item) => {
               return (
                 <tr key={item.id}>
                   <td>
@@ -70,17 +72,17 @@ const Dashboard = (): JSX.Element => {
                   <td>{item.description}</td>
                   <td>
                     <LinkEdit to={`/edit/${item.id}`}>Editar</LinkEdit>
-                    <button
+                    <ButtonDas
                       onClick={async () => {
                         await deleteItem(item.id, item.deleteImage)
                       }}
                     >
                       Eliminar
-                    </button>
+                    </ButtonDas>
                   </td>
                 </tr>
               )
-            })}
+            })) : <Spinner />}
           </tbody>
         </Table>
       </Wrapper>

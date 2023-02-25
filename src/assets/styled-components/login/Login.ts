@@ -41,4 +41,5 @@ margin-top: 20px;
 margin-bottom: 20px;
 border-color: var(--secondary_color);
 background-color: var(--primary_color);
+cursor: pointer;
 `
