@@ -4,7 +4,7 @@ import {
   Description,
   Title,
   Paragraph,
-} from '../assets/styled-components/Head';
+} from '../assets/styled-components/Head'
 
 const Head = ({ img, title, paragraph, reverse }: HeadProps): JSX.Element => {
   return (
@@ -15,14 +15,14 @@ const Head = ({ img, title, paragraph, reverse }: HeadProps): JSX.Element => {
         <Paragraph>{paragraph}</Paragraph>
       </Description>
     </HeadSection>
-  );
-};
+  )
+}
 
-export default Head;
+export default Head
 
 interface HeadProps {
-  img: string;
-  title: string;
-  paragraph: string;
-  reverse: boolean;
+  img: string
+  title: string
+  paragraph: string
+  reverse: boolean
 }

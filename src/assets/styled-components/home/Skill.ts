@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const SkillDiv = styled.div`
   padding: 1.25em 2.5em;
   border: 1px solid #49494940;
   align-self: stretch;
   max-width: 400px;
-`;
+`
 
 export const TitleH3 = styled.h3`
   font-weight: 600;
@@ -13,7 +13,7 @@ export const TitleH3 = styled.h3`
   line-height: 39px;
   color: var(--complementary_color);
   margin-bottom: 12px;
-`;
+`
 
 export const List = styled.ul`
   & > li {
@@ -23,4 +23,4 @@ export const List = styled.ul`
     margin-bottom: 12px;
     text-decoration: none;
   }
-`;
+`

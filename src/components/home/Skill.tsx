@@ -2,7 +2,7 @@ import {
   SkillDiv,
   TitleH3,
   List,
-} from '../../assets/styled-components/home/Skill';
+} from '../../assets/styled-components/home/Skill'
 
 const Skill = ({ title, list }: SkillProps): JSX.Element => {
   return (
@@ -10,16 +10,16 @@ const Skill = ({ title, list }: SkillProps): JSX.Element => {
       <TitleH3>{title}</TitleH3>
       <List>
         {list.map((value, index) => {
-          return <li key={index}>{value}</li>;
+          return <li key={index}>{value}</li>
         })}
       </List>
     </SkillDiv>
-  );
-};
+  )
+}
 
-export default Skill;
+export default Skill
 
 interface SkillProps {
-  title: string;
-  list: string[];
+  title: string
+  list: string[]
 }

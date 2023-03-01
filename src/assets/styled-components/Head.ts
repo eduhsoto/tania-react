@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 interface HeadProps {
-  reverse: boolean;
-};
+  reverse: boolean
+}
 
 export const HeadSection = styled.section<HeadProps>`
   display: grid;
@@ -18,11 +18,11 @@ export const HeadSection = styled.section<HeadProps>`
     css`
       direction: rtl;
     `}
-`;
+`
 
 export const Image = styled.img`
   width: 60%;
-`;
+`
 
 export const Description = styled.div<HeadProps>`
   background: linear-gradient(
@@ -42,7 +42,7 @@ export const Description = styled.div<HeadProps>`
         rgba(249, 175, 122, 0) 94.14%
       );
     `}
-`;
+`
 
 export const Title = styled.h1`
   font-weight: 800;
@@ -50,11 +50,11 @@ export const Title = styled.h1`
   line-height: 49px;
   color: var(--primary_color);
   margin-bottom: 20px;
-`;
+`
 
 export const Paragraph = styled.p`
   font-weight: 400;
   font-size: 1em;
   line-height: 24px;
   color: var(--text_color);
-`;
+`

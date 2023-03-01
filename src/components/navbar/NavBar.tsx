@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   Nav,
   NavContainer,
   NavA,
   NavSocial,
   NavItem,
-} from '../../assets/styled-components/navbar/Nav';
-import Hamburger from './Hamburger';
+} from '../../assets/styled-components/navbar/Nav'
+import Hamburger from './Hamburger'
 
 const NavBar = (): JSX.Element => {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(false)
 
   const handleClick = (): void => {
-    setClicked(!clicked);
-  };
+    setClicked(!clicked)
+  }
 
   return (
     <Nav>
@@ -72,7 +72,7 @@ const NavBar = (): JSX.Element => {
         </div>
       </NavContainer>
     </Nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

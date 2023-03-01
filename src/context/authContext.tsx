@@ -47,9 +47,7 @@ export const AuthProvider = ({ children }: RouteProps): React.ReactElement => {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{ auth, user, signIn, logOut, isLoading }}
-    >
+    <AuthContext.Provider value={{ auth, user, signIn, logOut, isLoading }}>
       {children}
     </AuthContext.Provider>
   )

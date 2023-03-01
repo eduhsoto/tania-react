@@ -1,7 +1,7 @@
-import Head from '../components/Head';
-import Skill from '../components/home/Skill';
-import Objective from '../components/home/Objective';
-import { TextP } from '../assets/styled-components/home/Objective';
+import Head from '../components/Head'
+import Skill from '../components/home/Skill'
+import Objective from '../components/home/Objective'
+import { TextP } from '../assets/styled-components/home/Objective'
 
 const Home = (): JSX.Element => {
   return (
@@ -95,7 +95,7 @@ const Home = (): JSX.Element => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

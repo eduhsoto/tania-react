@@ -1,6 +1,6 @@
-import Head from '../components/Head';
-import Certificate from '../components/path/Certificate';
-import { TextP } from '../assets/styled-components/home/Objective';
+import Head from '../components/Head'
+import Certificate from '../components/path/Certificate'
+import { TextP } from '../assets/styled-components/home/Objective'
 
 const Path = (): JSX.Element => {
   return (
@@ -93,7 +93,7 @@ const Path = (): JSX.Element => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Path;
+export default Path

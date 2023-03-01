@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage, ref, uploadBytes } from 'firebase/storage'
-import type {UploadResult} from 'firebase/storage'
+import type { UploadResult } from 'firebase/storage'
 import { v4 } from 'uuid'
 
 const {
@@ -32,12 +32,15 @@ export const auth = getAuth(app)
 export const db = getFirestore(app)
 export const storage = getStorage(app)
 
-export const uploadFile = async (file : Blob) : Promise<UploadResult> => {
+export const uploadFile = async (file: Blob): Promise<UploadResult> => {
   const storageRef = ref(storage, v4())
   return await uploadBytes(storageRef, file)
 }
 
-export const updateloadFile = async (file : Blob, idImg : string) : Promise<UploadResult> => {
+export const updateloadFile = async (
+  file: Blob,
+  idImg: string
+): Promise<UploadResult> => {
   const storageRef = ref(storage, idImg)
   return await uploadBytes(storageRef, file)
 }

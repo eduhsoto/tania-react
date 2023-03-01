@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const Nav = styled.nav`
   box-shadow: var(--box_shadow);
@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   top: 0;
   z-index: 900;
   background-color: var(--primary_color);
-`;
+`
 
 export const NavContainer = styled.div`
   margin: 0px 60px;
@@ -58,7 +58,7 @@ export const NavContainer = styled.div`
       width: 40px;
     }
   }
-`;
+`
 
 export const NavA = styled(NavLink)`
   color: var(--text_color);
@@ -98,7 +98,7 @@ export const NavA = styled(NavLink)`
     margin: 50px 0px;
     font-size: 24px;
   }
-`;
+`
 
 export const NavSocial = styled.a`
   margin: 0 5px;
@@ -106,7 +106,7 @@ export const NavSocial = styled.a`
   &:hover {
     transform: scale(1.2);
   }
-`;
+`
 
 export const NavItem = styled.div`
   @media screen and (max-width: 820px) {
@@ -115,4 +115,4 @@ export const NavItem = styled.div`
     align-items: center;
     margin: auto 0px;
   }
-`;
+`

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const CardObjectives = styled.div`
   padding: 1.25em 2.5em;
@@ -11,12 +11,12 @@ export const CardObjectives = styled.div`
   max-width: 250px;
   flex-grow: 1;
   align-self: stretch;
-`;
+`
 
 export const CardImage = styled.img`
   width: 40%;
   margin-bottom: 20px;
-`;
+`
 
 export const TextP = styled.p`
   font-weight: 400;
@@ -24,4 +24,4 @@ export const TextP = styled.p`
   line-height: 24px;
   color: var(--text_color);
   margin-bottom: 20px;
-`;
+`
