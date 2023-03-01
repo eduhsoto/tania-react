@@ -4,7 +4,7 @@ import {
   FooterItem,
   FooterLink,
   FooterButton,
-} from '../assets/styled-components/Footer';
+} from '../assets/styled-components/Footer'
 
 const Footer = (): JSX.Element => {
   return (
@@ -61,7 +61,7 @@ const Footer = (): JSX.Element => {
         </div>
       </FooterH>
     </>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

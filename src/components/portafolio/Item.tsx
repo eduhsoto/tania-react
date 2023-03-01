@@ -5,7 +5,7 @@ import {
   H1,
   Category,
   Paragraph,
-} from '../../assets/styled-components/portafolio/Item';
+} from '../../assets/styled-components/portafolio/Item'
 
 const Item = ({
   link,
@@ -31,15 +31,15 @@ const Item = ({
         </ImageF>
       </a>
     </ListItem>
-  );
-};
+  )
+}
 
-export default Item;
+export default Item
 
 interface ItemProps {
-  link: string;
-  img: string;
-  title: string;
-  category: string;
-  paragraph: string;
+  link: string
+  img: string
+  title: string
+  category: string
+  paragraph: string
 }

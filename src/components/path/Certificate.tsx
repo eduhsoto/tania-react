@@ -2,7 +2,7 @@ import {
   Group,
   Image,
   ALink,
-} from '../../assets/styled-components/path/Certificate';
+} from '../../assets/styled-components/path/Certificate'
 
 const Certificate = ({ img, link }: CertificateProps): JSX.Element => {
   return (
@@ -12,12 +12,12 @@ const Certificate = ({ img, link }: CertificateProps): JSX.Element => {
         Ver
       </ALink>
     </Group>
-  );
-};
+  )
+}
 
-export default Certificate;
+export default Certificate
 
 interface CertificateProps {
-  img: string;
-  link: string;
+  img: string
+  link: string
 }

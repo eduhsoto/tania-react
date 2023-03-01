@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const NavHamburger = styled.div`
   @media screen and (max-width: 820px) {
@@ -47,4 +47,4 @@ export const NavHamburger = styled.div`
       transform-origin: 5%;
     }
   }
-`;
+`

@@ -1,4 +1,4 @@
-import { NavHamburger } from '../../assets/styled-components/navbar/Hamburger';
+import { NavHamburger } from '../../assets/styled-components/navbar/Hamburger'
 
 export const Hamburger = ({
   handleClick,
@@ -16,12 +16,12 @@ export const Hamburger = ({
         <span></span>
       </div>
     </NavHamburger>
-  );
-};
+  )
+}
 
-export default Hamburger;
+export default Hamburger
 
 interface HamburgerProps {
-  handleClick: React.MouseEventHandler<HTMLDivElement>;
-  clicked: boolean;
+  handleClick: React.MouseEventHandler<HTMLDivElement>
+  clicked: boolean
 }

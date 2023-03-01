@@ -4,7 +4,14 @@ import { db, storage } from '../../firebase/conection'
 import { deleteObject, ref } from 'firebase/storage'
 import { useAuth, type AuthContextModel } from '../../context/authContext'
 import { type DocsContextModel, useDocs } from '../../context/getDocsContext'
-import { ButtonDas, H1, LinkEdit, Table, TopNav, Wrapper } from '../../assets/styled-components/dashboard/Dashboard'
+import {
+  ButtonDas,
+  H1,
+  LinkEdit,
+  Table,
+  TopNav,
+  Wrapper,
+} from '../../assets/styled-components/dashboard/Dashboard'
 import Spinner from '../../components/Spinner'
 
 const Dashboard = (): JSX.Element => {
@@ -51,38 +58,41 @@ const Dashboard = (): JSX.Element => {
             </tr>
           </thead>
           <tbody>
-            {items.length !== 0    
-           ? (items.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>
-                    <img src={item.imageUrl} alt='post' />
-                  </td>
-                  <td>
-                    <a
-                      href={item.url}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      Enlace
-                    </a>
-                  </td>
-                  <td>{item.title}</td>
-                  <td>{item.category}</td>
-                  <td>{item.description}</td>
-                  <td>
-                    <LinkEdit to={`/edit/${item.id}`}>Editar</LinkEdit>
-                    <ButtonDas
-                      onClick={async () => {
-                        await deleteItem(item.id, item.deleteImage)
-                      }}
-                    >
-                      Eliminar
-                    </ButtonDas>
-                  </td>
-                </tr>
-              )
-            })) : <Spinner />}
+            {items.length !== 0 ? (
+              items.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>
+                      <img src={item.imageUrl} alt='post' />
+                    </td>
+                    <td>
+                      <a
+                        href={item.url}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        Enlace
+                      </a>
+                    </td>
+                    <td>{item.title}</td>
+                    <td>{item.category}</td>
+                    <td>{item.description}</td>
+                    <td>
+                      <LinkEdit to={`/edit/${item.id}`}>Editar</LinkEdit>
+                      <ButtonDas
+                        onClick={async () => {
+                          await deleteItem(item.id, item.deleteImage)
+                        }}
+                      >
+                        Eliminar
+                      </ButtonDas>
+                    </td>
+                  </tr>
+                )
+              })
+            ) : (
+              <Spinner />
+            )}
           </tbody>
         </Table>
       </Wrapper>

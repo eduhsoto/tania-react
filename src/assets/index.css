@@ -4,8 +4,8 @@
   line-height: 24px;
   font-weight: 400;
   --primary_color: #ffffff;
-  --secondary_color: #F35A7E;
-  --errors: #9E1F25;
+  --secondary_color: #f35a7e;
+  --errors: #9e1f25;
   --complementary_color: #187575fa;
   --complementary_color_second: #225555fa;
   --text_color: #5c5555;
@@ -24,7 +24,7 @@
   padding: 0;
 }
 
-.spinner__load{
+.spinner__load {
   display: flex;
   align-items: center;
   justify-content: center;

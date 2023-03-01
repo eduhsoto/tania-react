@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ALink } from './path/Certificate';
+import styled from 'styled-components'
+import { ALink } from './path/Certificate'
 
 export const FooterH = styled.footer`
   margin: 0px 80px;
@@ -10,7 +10,7 @@ export const FooterH = styled.footer`
   @media screen and (max-width: 540px) {
     margin: 0px 16px;
   }
-`;
+`
 
 export const FooterGrid = styled.div`
   display: grid;
@@ -53,20 +53,20 @@ export const FooterGrid = styled.div`
       justify-content: center;
     }
   }
-`;
+`
 
 export const FooterItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: stretch;
-`;
+`
 
 export const FooterLink = styled.a`
   margin: 0px 10px;
   color: black;
-`;
+`
 
 export const FooterButton = styled(ALink)`
   font-weight: 400;
   margin: 0px 50px;
-`;
+`

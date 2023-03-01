@@ -51,16 +51,16 @@ export const Wrapper = styled.div`
 export const H1 = styled.h1`
   text-align: center;
   margin-top: 50px;
-  color: #187575FA;
+  color: #187575fa;
 `
 export const LinkEdit = styled(Link)`
-margin-right: 30px;
-background-color: var(--errors);
-border-color: none;
-padding: 4px 4px;
-color: var(--primary_color);
+  margin-right: 30px;
+  background-color: var(--errors);
+  border-color: none;
+  padding: 4px 4px;
+  color: var(--primary_color);
 `
-export const ButtonDas = styled(Button) `
-padding: 4px 4px;
-font-weight: 600;
+export const ButtonDas = styled(Button)`
+  padding: 4px 4px;
+  font-weight: 600;
 `

@@ -6,10 +6,7 @@ import { useAuth, type AuthContextModel } from '../../context/authContext'
 const ProctedRoute = ({ children }: PropsWithChildren): JSX.Element => {
   const { user, isLoading } = useAuth() as AuthContextModel
 
-  if (isLoading)
-    return (
-      <Spinner />
-    )
+  if (isLoading) return <Spinner />
 
   if (user === null)
     return (

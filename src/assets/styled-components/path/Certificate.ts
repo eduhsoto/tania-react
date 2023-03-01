@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Group = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
+`
 
 export const Image = styled.img`
   width: 80%;
-`;
+`
 
 export const ALink = styled.a`
   padding: 10px 10px;
@@ -27,4 +27,4 @@ export const ALink = styled.a`
     background-color: var(--complementary_color);
     color: var(--primary_color);
   }
-`;
+`

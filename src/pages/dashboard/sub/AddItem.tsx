@@ -5,7 +5,11 @@ import { getDownloadURL } from 'firebase/storage'
 import { useNavigate } from 'react-router-dom'
 import type React from 'react'
 import { useState } from 'react'
-import { Button, GroupForm, LoginDiv } from '../../../assets/styled-components/login/Login'
+import {
+  Button,
+  GroupForm,
+  LoginDiv,
+} from '../../../assets/styled-components/login/Login'
 import { FormAdd } from '../../../assets/styled-components/dashboard/sub/AddItem'
 
 interface Inputs {
@@ -73,7 +77,7 @@ const AddItem = (): JSX.Element => {
   return (
     <LoginDiv>
       <FormAdd onSubmit={handleSubmit(onSubmit)}>
-      <h1>Agregar nuevo item</h1>
+        <h1>Agregar nuevo item</h1>
         <GroupForm>
           {previewImg != null && (
             <div>

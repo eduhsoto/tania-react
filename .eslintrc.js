@@ -29,14 +29,12 @@ module.exports = {
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    "@typescript-eslint/no-misused-promises": [
-      "error",
+    '@typescript-eslint/no-misused-promises': [
+      'error',
       {
-        "checksVoidReturn": false
-      }
-    ]
+        checksVoidReturn: false,
+      },
+    ],
   },
-  ignorePatterns: [
-    ".eslintrc.js"
-],
-};
+  ignorePatterns: ['.eslintrc.js'],
+}
